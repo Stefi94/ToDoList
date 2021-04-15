@@ -64,11 +64,68 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCategory.Designer.cs">
+      <DependentUpon>FormCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChangeLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChangeLogin.Designer.cs">
+      <DependentUpon>FormChangeLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChangePassword.Designer.cs">
+      <DependentUpon>FormChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDeleteAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDeleteAccount.Designer.cs">
+      <DependentUpon>FormDeleteAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRegister.Designer.cs">
+      <DependentUpon>FormRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogInForm.Designer.cs">
+      <DependentUpon>LogInForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Category_.cs" />
     <Compile Include="Services\Task_.cs" />
     <Compile Include="Services\User_.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCategory.resx">
+      <DependentUpon>FormCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChangeLogin.resx">
+      <DependentUpon>FormChangeLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChangePassword.resx">
+      <DependentUpon>FormChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDeleteAccount.resx">
+      <DependentUpon>FormDeleteAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRegister.resx">
+      <DependentUpon>FormRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogInForm.resx">
+      <DependentUpon>LogInForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
