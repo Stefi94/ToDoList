@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ToDoList.Services;
 
 namespace ToDoList
 {
@@ -19,15 +20,30 @@ namespace ToDoList
 
         private void buttonRegistration_Click(object sender, EventArgs e)
         {
-            // najpierw sprawdza czy taki login istnieje już w bazie
-            // porównuje login i hasło z obu textboxów czy użytkownik podał dwa razy to samo
-            // rejestruje użytkownika
-            // przekazuje login i hasło oraz zamyka okno
-            // wykonuje logowanie z przekazanymi parametrami i zamyka okno logowania
+            if (textBoxLogin.Text.Equals( textBoxLoginRepeat.Text) && textBoxPassword.Text.Equals( textBoxPasswordRepeat.Text))
+            {
+                if (textBoxLogin.Text != "" && textBoxPassword.Text != "")
+                {
+                    if (textBoxLogin.Text.Length >= 8 && textBoxPassword.Text.Length >= 8)
+                    {
+                        User_ user = new User_();
+                        if (user.AddUser(textBoxLogin.Text, textBoxPassword.Text) == true)
+                        {
 
-            MessageBox.Show("Poprawnie dodano nowego użytkownika");
+                            MessageBox.Show("Poprawnie dodano nowego użytkownika");
 
-            this.Close();
+                            this.Close();
+
+                        }
+                    }
+                    else
+                        MessageBox.Show("Login i hasło muszą składać się z conajmniej 8 znaków");
+                }
+                else
+                    MessageBox.Show("Pola login i hasło nie mogą być puste");
+            }
+            else
+                MessageBox.Show("należy podać dwa razy taki sam login i hasło");
         }
     }
 }

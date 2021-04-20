@@ -28,7 +28,7 @@ namespace ToDoList
         {
             if (MessageBox.Show("Czy na pewno chcesz się wylogować?", "Wyloguj",  MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                //wylogowanie
+                //todo wylogowanie
 
             }
         }
@@ -37,7 +37,7 @@ namespace ToDoList
         {
             if (MessageBox.Show( "Czy na pewno chcesz się wylogować i zamknąć program?", "Wyloguj i zamknij", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                //wylogowanie
+                //todo wylogowanie
                 this.Close();
             }
         }
@@ -84,6 +84,20 @@ namespace ToDoList
         {
             var formCategory = new FormCategory(Action);
             formCategory.ShowDialog();
+        }
+
+        private void AddTaskRepeatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //todo stworzyć form dla dodawania nowych powtarzających się zadań
+            // np raz w tygodniu, ile razy powtórzyć, raz w miesiącu, codziennie, co parę dni, np co dwa 5 dni itp.
+            // zastanawiam sie jak rozwiązać nietypową częstotliwość, np poniedziałek i środa, albo wtorek i niedziela
+            //użytkownik musi podać liczbę lub wybrać z listy ile razy należy powtórzyć zadanie
+        }
+
+        private void AddTaskToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //todo dodaj nowe zadanie  wywołuje tą samą metodę co button btnAddTask
+            //todo okienko form dla zwykłych zadań
         }
     }
 }

@@ -41,8 +41,8 @@ namespace ToDoList
             this.EditCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zadaniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dodajZadaniePowtarzająceSięToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dodajNoweZadanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddTaskRepeatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuńWszystkieZadaniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuńWszystkieZrealizowaneZadaniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuńZadaniaZPrzedziałuCzasuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -157,8 +157,8 @@ namespace ToDoList
             // zadaniaToolStripMenuItem
             // 
             this.zadaniaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dodajZadaniePowtarzająceSięToolStripMenuItem,
-            this.dodajNoweZadanieToolStripMenuItem,
+            this.AddTaskRepeatToolStripMenuItem,
+            this.AddTaskToolStripMenuItem,
             this.usuńWszystkieZadaniaToolStripMenuItem,
             this.usuńWszystkieZrealizowaneZadaniaToolStripMenuItem,
             this.usuńZadaniaZPrzedziałuCzasuToolStripMenuItem});
@@ -166,17 +166,19 @@ namespace ToDoList
             this.zadaniaToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.zadaniaToolStripMenuItem.Text = "Zadania";
             // 
-            // dodajZadaniePowtarzająceSięToolStripMenuItem
+            // AddTaskRepeatToolStripMenuItem
             // 
-            this.dodajZadaniePowtarzająceSięToolStripMenuItem.Name = "dodajZadaniePowtarzająceSięToolStripMenuItem";
-            this.dodajZadaniePowtarzająceSięToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
-            this.dodajZadaniePowtarzająceSięToolStripMenuItem.Text = "Dodaj zadanie powtarzające się";
+            this.AddTaskRepeatToolStripMenuItem.Name = "AddTaskRepeatToolStripMenuItem";
+            this.AddTaskRepeatToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
+            this.AddTaskRepeatToolStripMenuItem.Text = "Dodaj zadanie powtarzające się";
+            this.AddTaskRepeatToolStripMenuItem.Click += new System.EventHandler(this.AddTaskRepeatToolStripMenuItem_Click);
             // 
-            // dodajNoweZadanieToolStripMenuItem
+            // AddTaskToolStripMenuItem
             // 
-            this.dodajNoweZadanieToolStripMenuItem.Name = "dodajNoweZadanieToolStripMenuItem";
-            this.dodajNoweZadanieToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
-            this.dodajNoweZadanieToolStripMenuItem.Text = "Dodaj nowe zadanie";
+            this.AddTaskToolStripMenuItem.Name = "AddTaskToolStripMenuItem";
+            this.AddTaskToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
+            this.AddTaskToolStripMenuItem.Text = "Dodaj nowe zadanie";
+            this.AddTaskToolStripMenuItem.Click += new System.EventHandler(this.AddTaskToolStripMenuItem_Click);
             // 
             // usuńWszystkieZadaniaToolStripMenuItem
             // 
@@ -340,7 +342,7 @@ namespace ToDoList
         private System.Windows.Forms.ToolStripMenuItem EditCategoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DeleteCategoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zadaniaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dodajZadaniePowtarzająceSięToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AddTaskRepeatToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuńWszystkieZadaniaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuńWszystkieZrealizowaneZadaniaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuńZadaniaZPrzedziałuCzasuToolStripMenuItem;
@@ -356,7 +358,7 @@ namespace ToDoList
         private System.Windows.Forms.ColumnHeader columnCreateDate;
         private System.Windows.Forms.ColumnHeader columnDateLimit;
         private System.Windows.Forms.ColumnHeader columnIsRealized;
-        private System.Windows.Forms.ToolStripMenuItem dodajNoweZadanieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AddTaskToolStripMenuItem;
         private System.Windows.Forms.Button btnAddTask;
         private System.Windows.Forms.Button btnShowEdit;
         private System.Windows.Forms.ToolStripMenuItem LogOutAndCloseProgramToolStripMenuItem;
