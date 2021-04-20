@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace ToDoList
 {
-   public static class LogedUser
+   public static class LoggedUser
     {
-        public static bool UserIsLoged { get; set; } = false;
+        public static bool UserIsLogged { get; private set; } = false;
         public static string UserLogin { get; set; } = null;
         public static int? UserID { get; set; } = null;
         
         public static void UserLogOut()
         {
-            UserIsLoged = false;
+            UserIsLogged = false;
             UserLogin = null;
             UserID = null;
         }
 
       
-        public static void SetUser(string login, int userID)
+        public static void SetUser(string login, int? userID)
         {
-            UserIsLoged = true;
+            UserIsLogged = true;
             UserLogin = login;
             UserID = userID;
 

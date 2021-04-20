@@ -7,28 +7,57 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ToDoList.db_ToDoList;
+using ToDoList.Services;
 
 namespace ToDoList
 {
     public partial class FormMainWindow : Form
     {
         private string buttonCategory;
+        private int ordinalNumber = 1;
         public FormMainWindow()
         {
             InitializeComponent();
             var formLogIn = new FormLogIn();
             formLogIn.ShowDialog();
-
+            if (LoggedUser.UserIsLogged)
+            {
+                labelWhoIsLogged.Text = "Zalogowany jako " + LoggedUser.UserLogin;
+                labelWhoIsLogged.ForeColor = Color.Green;
+                ShowListTask();
+            }
         }
 
-   
-
+        private void ShowListTask()
+        {
+            Task_ list = new Task_();
+            List<Tasks> taskList =  list.FindTask();
+            foreach (var elem in taskList)
+            {
+                var element = new ListViewItem(new string[] {ordinalNumber++.ToString(),elem.Category.CategoryName, elem.Title, elem.Content, elem.CreateDate.ToString(), elem.DateLimit.ToString() } );
+                listViewTask.Items.Add(element);
+            }
+        }
+       
+ 
       
         private void LogOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Czy na pewno chcesz się wylogować?", "Wyloguj",  MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                //todo wylogowanie
+                LoggedUser.UserLogOut();
+                listViewTask.Items.Clear();
+                labelWhoIsLogged.Text = "Użytkownik został wylogowany";
+                labelWhoIsLogged.ForeColor = Color.Red;
+                var formLogIn = new FormLogIn();
+                formLogIn.ShowDialog();
+                if (LoggedUser.UserIsLogged)
+                {
+                    labelWhoIsLogged.Text = "Zalogowany jako " + LoggedUser.UserLogin;
+                    labelWhoIsLogged.ForeColor = Color.Green;
+                    ShowListTask();
+                }
 
             }
         }
@@ -37,7 +66,7 @@ namespace ToDoList
         {
             if (MessageBox.Show( "Czy na pewno chcesz się wylogować i zamknąć program?", "Wyloguj i zamknij", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                //todo wylogowanie
+                LoggedUser.UserLogOut();
                 this.Close();
             }
         }
@@ -98,6 +127,17 @@ namespace ToDoList
         {
             //todo dodaj nowe zadanie  wywołuje tą samą metodę co button btnAddTask
             //todo okienko form dla zwykłych zadań
+        }
+
+        private void btnShowEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void btnShowEdit_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

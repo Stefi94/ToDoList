@@ -95,16 +95,20 @@
     <Compile Include="FormRegister.Designer.cs">
       <DependentUpon>FormRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="LogedUser.cs" />
-    <Compile Include="LogInForm.cs">
+    <Compile Include="LoggedUser.cs" />
+    <Compile Include="FormLogIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LogInForm.Designer.cs">
-      <DependentUpon>LogInForm.cs</DependentUpon>
+    <Compile Include="FormLogIn.Designer.cs">
+      <DependentUpon>FormLogIn.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202104191915578_pierwszaMigracja.cs" />
     <Compile Include="Migrations\202104191915578_pierwszaMigracja.Designer.cs">
       <DependentUpon>202104191915578_pierwszaMigracja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104201656592_pierwszaMigracjaw.cs" />
+    <Compile Include="Migrations\202104201656592_pierwszaMigracjaw.Designer.cs">
+      <DependentUpon>202104201656592_pierwszaMigracjaw.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -130,11 +134,14 @@
     <EmbeddedResource Include="FormRegister.resx">
       <DependentUpon>FormRegister.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LogInForm.resx">
-      <DependentUpon>LogInForm.cs</DependentUpon>
+    <EmbeddedResource Include="FormLogIn.resx">
+      <DependentUpon>FormLogIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104191915578_pierwszaMigracja.resx">
       <DependentUpon>202104191915578_pierwszaMigracja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104201656592_pierwszaMigracjaw.resx">
+      <DependentUpon>202104201656592_pierwszaMigracjaw.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

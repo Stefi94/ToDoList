@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using ToDoList.db_ToDoList;
 
 namespace ToDoList.Services
 {
@@ -15,8 +16,12 @@ namespace ToDoList.Services
         public void EditTask() { //todo metoda edytuj zadanie
             //pobierz do okna (tego samego formularza co dodajesz zadanie) i w nim edytuj
         }
-        public void FindTask() { //todo metoda znajdz zadanie albo będzie przyjmować różne parametry, albo będzie przeciążana
-            // bo jest kilka opcji
+        public List<Tasks> FindTask() { //todo metoda znajdz zadanie albo będzie przyjmować różne parametry, albo będzie przeciążana
+          using(var context = new Context())
+            {
+                var tasksList = context.Tasks.Where(x => x.ID_User_FK == LoggedUser.UserID).Include(x => x.Category).ToList();
+                return tasksList;
+            }
         }
 
         //todo kilka nowych metod dodaj zadania powtarzające się

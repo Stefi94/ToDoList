@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ToDoList.Services;
 
 namespace ToDoList
 {
@@ -16,6 +17,7 @@ namespace ToDoList
         {
             InitializeComponent();
         }
+       
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
@@ -25,9 +27,9 @@ namespace ToDoList
 
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
-            //wykonuje logowanie, jeśli dane się zgadzają loguje i zamyka okno
-            //jesli nie, wyskakuje komunikat o błędzie
-
+            var logIn = new User_();
+            logIn.LogIn(textBoxLogin.Text,textBoxPassword.Text);
+            if(LoggedUser.UserIsLogged)
             this.Close();
         }
     }

@@ -1,5 +1,4 @@
-﻿
-namespace ToDoList
+﻿namespace ToDoList
 {
     partial class FormMainWindow
     {
@@ -60,6 +59,7 @@ namespace ToDoList
             this.columnIsRealized = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnAddTask = new System.Windows.Forms.Button();
             this.btnShowEdit = new System.Windows.Forms.Button();
+            this.labelWhoIsLogged = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -306,12 +306,23 @@ namespace ToDoList
             this.btnShowEdit.TabIndex = 6;
             this.btnShowEdit.Text = "Wyświetl lub edytuj";
             this.btnShowEdit.UseVisualStyleBackColor = true;
+            this.btnShowEdit.Click += new System.EventHandler(this.btnShowEdit_Click_1);
+            // 
+            // labelWhoIsLogged
+            // 
+            this.labelWhoIsLogged.AutoSize = true;
+            this.labelWhoIsLogged.Location = new System.Drawing.Point(468, 53);
+            this.labelWhoIsLogged.Name = "labelWhoIsLogged";
+            this.labelWhoIsLogged.Size = new System.Drawing.Size(83, 13);
+            this.labelWhoIsLogged.TabIndex = 7;
+            this.labelWhoIsLogged.Text = "Nie zalogowano";
             // 
             // FormMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(986, 555);
+            this.Controls.Add(this.labelWhoIsLogged);
             this.Controls.Add(this.btnShowEdit);
             this.Controls.Add(this.btnAddTask);
             this.Controls.Add(this.listViewTask);
@@ -362,6 +373,6 @@ namespace ToDoList
         private System.Windows.Forms.Button btnAddTask;
         private System.Windows.Forms.Button btnShowEdit;
         private System.Windows.Forms.ToolStripMenuItem LogOutAndCloseProgramToolStripMenuItem;
+        private System.Windows.Forms.Label labelWhoIsLogged;
     }
 }
-

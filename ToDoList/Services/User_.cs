@@ -15,7 +15,7 @@ namespace ToDoList.Services
         {
             using (var context = new Context())
             {
-               if( context.Users.Where(x => x.Login == login).FirstOrDefault() == null)
+               if( !context.Users.Where(x => x.Login == login).Any())
                     return false; //this login isn't exist in DB
                else
                     return true; //this login is exist in DB
@@ -38,11 +38,29 @@ namespace ToDoList.Services
                 return false;
             }
         }
-        public void LogIn(string login, string password) {
-            //todo login dokończyć
+        public void LogIn(string login, string password) {   
+            if (CheckLogin(login))
+            {
+                using (var context = new Context())
+                {
+                         
+                    var userID = context.Users.Where(x=> x.Login == login && x.Password == password).Select(x => x.ID_User).FirstOrDefault();
+                    if (userID != 0)
+                    {
+                        LoggedUser.SetUser(login, userID);         
+                    }
+                    else
+                    MessageBox.Show( "Złe hasło");
+                }
+            }
+            else
+                MessageBox.Show("Nie ma takiego użytkownika");
         
         }
-        public void LogOut() { }
+        public void LogOut() {
+            LoggedUser.UserLogOut();
+                
+        }
         public void RemoveUser() { }
         public void ChangePassword() { }
         public void ChangeNameUser() { }
