@@ -59,7 +59,33 @@ namespace ToDoList.Services
         }
 
         public void RemoveUser() { }
-        public void ChangePassword() { }
+        public bool ChangePassword(string oldPassword, string newPassword) {
+            if (LoggedUser.UserIsLogged)
+            {
+                using(var context = new Context())
+                {
+                    var editPassword = context.Users.Where(x => x.ID_User == LoggedUser.UserID && x.Password == oldPassword).FirstOrDefault();
+
+                    if(editPassword != null)
+                    {
+                        editPassword.Password = newPassword;
+                        context.SaveChanges();
+                        MessageBox.Show($"Poprawnie zmieniono hasło dla użytkownika {LoggedUser.UserLogin}");
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Musisz podać prawidłowe stare hasło, aby zmiany zostały zatwierdzone");
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nie można zmienić hasła, jeśli żaden użytkownik nie jest zalogowany");
+                return false;
+            }
+        }
         public bool ChangeNameUser(string newLogin, string password) {
             if (CheckLogin(newLogin)) {
                 MessageBox.Show("Podany login jest już zajęty");
