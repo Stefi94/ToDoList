@@ -10,7 +10,7 @@ namespace ToDoList.Services
 {
     public class User_
     {
-        //todo ciała metod w klasie user, wyloguj, usuń użytkownika, zmien login i hasło
+        
         private bool CheckLogin(string login)
         {
             using (var context = new Context())
@@ -57,12 +57,36 @@ namespace ToDoList.Services
                 MessageBox.Show("Nie ma takiego użytkownika");
         
         }
-        public void LogOut() {
-            LoggedUser.UserLogOut();
-                
-        }
+
         public void RemoveUser() { }
         public void ChangePassword() { }
-        public void ChangeNameUser() { }
+        public bool ChangeNameUser(string newLogin, string password) {
+            if (CheckLogin(newLogin)) {
+                MessageBox.Show("Podany login jest już zajęty");
+                return false;
+            }
+            else
+            {
+                using (var context = new Context()) {
+                   
+                    var editLogin = context.Users.Where(x => x.ID_User == LoggedUser.UserID && x.Password == password).FirstOrDefault();
+                    
+                    if(editLogin != null)
+                    {
+                        editLogin.Login = newLogin;
+                        context.SaveChanges();
+                        LoggedUser.UserLogin = newLogin;
+                        MessageBox.Show($"Poprawnie zmieniono login na {LoggedUser.UserLogin}");
+                        return true;
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("Podałeś złe hasło");
+                        return false;
+                    }
+                 }
+            }
+        }
     }
 }

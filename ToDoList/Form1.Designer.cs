@@ -297,6 +297,7 @@
             this.btnAddTask.TabIndex = 5;
             this.btnAddTask.Text = "Dodaj nowe zadanie";
             this.btnAddTask.UseVisualStyleBackColor = true;
+            this.btnAddTask.Click += new System.EventHandler(this.btnAddTask_Click);
             // 
             // btnShowEdit
             // 

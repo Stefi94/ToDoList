@@ -23,10 +23,15 @@ namespace ToDoList
             formLogIn.ShowDialog();
             if (LoggedUser.UserIsLogged)
             {
-                labelWhoIsLogged.Text = "Zalogowany jako " + LoggedUser.UserLogin;
-                labelWhoIsLogged.ForeColor = Color.Green;
+                WhoIsLogged();
                 ShowListTask();
+                
             }
+        }
+        private void WhoIsLogged()
+        {
+            labelWhoIsLogged.Text = "Zalogowany jako " + LoggedUser.UserLogin;
+            labelWhoIsLogged.ForeColor = Color.Green;
         }
 
         private void ShowListTask()
@@ -75,6 +80,9 @@ namespace ToDoList
         {
             var formChangeLogin = new FormChangeLogin();
             formChangeLogin.ShowDialog();
+            if(LoggedUser.UserIsLogged)
+            WhoIsLogged();
+
         }
 
         private void ChangePasswordToolStripMenuItem_Click(object sender, EventArgs e)
@@ -136,6 +144,11 @@ namespace ToDoList
 
 
         private void btnShowEdit_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddTask_Click(object sender, EventArgs e)
         {
 
         }

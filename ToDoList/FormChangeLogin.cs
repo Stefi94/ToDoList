@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ToDoList.Services;
 
 namespace ToDoList
 {
@@ -24,9 +25,28 @@ namespace ToDoList
 
         private void btnChangeLogin_Click(object sender, EventArgs e)
         {
-            //komunikat czy się udało czy nie
-            // jesli się udało zamyka okno
-            this.Close();
+            if (LoggedUser.UserIsLogged)
+            {
+                if (textBoxNewLogin.Text.Equals(textBoxNewLoginRepeat.Text))
+                {
+                    if (textBoxNewLogin.Text.Length > 7)
+                    {
+                        var changeLogin = new User_();
+                        if (changeLogin.ChangeNameUser(textBoxNewLogin.Text, textBoxPassword.Text))
+                            this.Close();
+                    }
+                    else
+                        MessageBox.Show("Nowy login musi mieć conajmniej 8 znaków");
+                }
+                else
+                    MessageBox.Show("Musisz podać dwa razy taki sam login");
+
+            }
+            else
+            {
+                MessageBox.Show("Aby zmienić login, musisz być zalogowany");
+                this.Close();
+            }
         }
     }
 }
