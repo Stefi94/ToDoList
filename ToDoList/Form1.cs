@@ -95,6 +95,13 @@ namespace ToDoList
         {
             var formDeleteAccount = new FormDeleteAccount();
             formDeleteAccount.ShowDialog();
+           if(formDeleteAccount.DeleteOrNot())
+            {
+                LoggedUser.UserLogOut();
+                listViewTask.Items.Clear();
+                labelWhoIsLogged.Text = "Użytkownik został wylogowany";
+                labelWhoIsLogged.ForeColor = Color.Red;
+            }
         }
 
         private void AddCategoryToolStripMenuItem_Click(object sender, EventArgs e)

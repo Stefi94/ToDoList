@@ -58,7 +58,24 @@ namespace ToDoList.Services
         
         }
 
-        public void RemoveUser() { }
+        public bool RemoveUser(string login, string password) 
+        {
+            using(var context = new Context())
+            {
+                var removeUser = context.Users.Where(x => x.Login == login && x.Password == password).FirstOrDefault();
+
+                if (removeUser != null)
+                {
+                    context.Users.Remove(removeUser);
+                    context.SaveChanges();
+                    //todo w tym miejscu trzeba wywołać metodę która kasuje wszystkie zadania dla danego użytkownika
+                    return true;
+                }
+                else
+                    return false;
+            }
+          
+        }
         public bool ChangePassword(string oldPassword, string newPassword) {
             if (LoggedUser.UserIsLogged)
             {
