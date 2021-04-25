@@ -20,30 +20,34 @@ namespace ToDoList
 
         private void buttonRegistration_Click(object sender, EventArgs e)
         {
-            if (textBoxLogin.Text.Equals( textBoxLoginRepeat.Text) && textBoxPassword.Text.Equals( textBoxPasswordRepeat.Text))
+            if (!string.IsNullOrWhiteSpace(textBoxLogin.Text) && !string.IsNullOrWhiteSpace(textBoxPassword.Text))
             {
-                if (textBoxLogin.Text != "" && textBoxPassword.Text != "")
+                if (textBoxLogin.Text.Equals(textBoxLoginRepeat.Text) && textBoxPassword.Text.Equals(textBoxPasswordRepeat.Text))
                 {
-                    if (textBoxLogin.Text.Length >= 8 && textBoxPassword.Text.Length >= 8)
+                    if (textBoxLogin.Text != "" && textBoxPassword.Text != "")
                     {
-                        User_ user = new User_();
-                        if (user.AddUser(textBoxLogin.Text, textBoxPassword.Text) == true)
+                        if (textBoxLogin.Text.Length >= 8 && textBoxPassword.Text.Length >= 8)
                         {
+                            User_ user = new User_();
+                            if (user.AddUser(textBoxLogin.Text, textBoxPassword.Text) == true)
+                            {
 
-                            MessageBox.Show("Poprawnie dodano nowego użytkownika");
+                                MessageBox.Show("Poprawnie dodano nowego użytkownika");
 
-                            this.Close();
+                                this.Close();
 
+                            }
                         }
+                        else
+                            MessageBox.Show("Login i hasło muszą składać się z conajmniej 8 znaków");
                     }
                     else
-                        MessageBox.Show("Login i hasło muszą składać się z conajmniej 8 znaków");
+                        MessageBox.Show("Pola login i hasło nie mogą być puste");
                 }
                 else
-                    MessageBox.Show("Pola login i hasło nie mogą być puste");
+                    MessageBox.Show("należy podać dwa razy taki sam login i hasło");
             }
-            else
-                MessageBox.Show("należy podać dwa razy taki sam login i hasło");
+            else MessageBox.Show("Login i hasło musi się składać z tekstu");
         }
     }
 }
