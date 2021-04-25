@@ -50,28 +50,32 @@ namespace ToDoList
 
         private void btnAddEditDelCat_Click(object sender, EventArgs e)
         {
-            string nameCategory = textBoxNameCategory.Text.Replace(" ", "");
+            string nameCategory = textBoxNameCategory.Text;
 
             if(btnAddEditDelCat.Text == "Dodaj")
             {
-                nameCategory.Trim();
-                if (category.AddCategory(nameCategory))
+                nameCategory = nameCategory.Trim();
+                if (!string.IsNullOrWhiteSpace(nameCategory))
                 {
-                    if(!string.IsNullOrWhiteSpace(nameCategory))
+
+
+                    if (category.AddCategory(nameCategory))
                     {
 
-                    }
-                    if (nameCategory.Length > 3)
-                    {
-                        MessageBox.Show("Dodałeś nową kategorię");
-                        this.Close();
+                        if (nameCategory.Length > 3)
+                        {
+                            MessageBox.Show("Dodałeś nową kategorię");
+                            this.Close();
+                        }
+                        else
+                            MessageBox.Show("Nazwa kategori musi mieć conajmniej 4 znaki");
+
                     }
                     else
-                        MessageBox.Show("Nazwa kategori musi mieć conajmniej 4 znaki");
-
+                        MessageBox.Show("Podana kategoria już istnieje w bazie, nie dodano jej drugi raz");
                 }
                 else
-                    MessageBox.Show("Podana kategoria już istnieje w bazie, nie dodano jej drugi raz");
+                    MessageBox.Show("Kategoria musi składać się z liter, a nie z białych znaków");
             }
             if (btnAddEditDelCat.Text == "Edytuj") 
             {
