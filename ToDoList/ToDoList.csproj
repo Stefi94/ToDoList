@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckText.cs" />
     <Compile Include="db_ToDoList\Categories.cs" />
     <Compile Include="db_ToDoList\Context.cs" />
     <Compile Include="db_ToDoList\Tasks.cs" />
