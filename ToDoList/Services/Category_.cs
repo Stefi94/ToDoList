@@ -50,7 +50,26 @@ namespace ToDoList.Services
             }
 
         }
-        public void RemoveCategory() { //todo ciało metody usuń kategorię, usuń tylko jesli nigdzie nie występuje
+        public bool RemoveCategory(string categoryName) {
+
+            using (var context = new Context())
+            {
+                var idCategory = context.Categories.Where(x => x.CategoryName == categoryName).Select(x => x.ID_Category).FirstOrDefault();
+                if (!context.Tasks.Where(x => x.ID_Category_FK == idCategory).Any())
+                {
+                    var removeCategory = context.Categories.Where(x => x.CategoryName == categoryName).FirstOrDefault();
+                    context.Categories.Remove(removeCategory);
+                    context.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show($"nie można usunąć kategori {categoryName}, ponieważ jest ona przypisana do konkretnych zadań");
+                    return false;
+                }
+            }
+
+
             
         }
         private bool CheckCategory(string nameCategory)

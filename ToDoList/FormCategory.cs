@@ -94,10 +94,20 @@ namespace ToDoList
                
                
             }
+
             if(btnAddEditDelCat.Text == "Usuń")
             {
-                MessageBox.Show("Usunąłeś kategorię");
-                this.Close();
+                if(cbNameCategory.Text == "") {
+                    MessageBox.Show("Aby usunąć musisz wybrać kategorię");
+                }
+                else if (category.RemoveCategory(cbNameCategory.Text))
+                    {
+                        MessageBox.Show("Usunąłeś kategorię");
+                        this.Close();
+                    }
+
+                
+                
             }
         }
         private void setComboBox()
