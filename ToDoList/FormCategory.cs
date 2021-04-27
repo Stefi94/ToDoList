@@ -54,35 +54,45 @@ namespace ToDoList
 
             if(btnAddEditDelCat.Text == "Dodaj")
             {
-                nameCategory = nameCategory.Trim();
-                if (!string.IsNullOrWhiteSpace(nameCategory))
+
+
+                nameCategory = category.CheckText(textBoxNameCategory.Text);
+
+                if (nameCategory != "")
                 {
-
-
                     if (category.AddCategory(nameCategory))
                     {
-
-                        if (nameCategory.Length > 3)
-                        {
-                            MessageBox.Show("Dodałeś nową kategorię");
-                            this.Close();
-                        }
-                        else
-                            MessageBox.Show("Nazwa kategori musi mieć conajmniej 4 znaki");
-
+                        MessageBox.Show("Dodałeś nową kategorię");
+                        this.Close();
                     }
                     else
                         MessageBox.Show("Podana kategoria już istnieje w bazie, nie dodano jej drugi raz");
                 }
-                else
-                    MessageBox.Show("Kategoria musi składać się z liter, a nie z białych znaków");
+               
             }
             if (btnAddEditDelCat.Text == "Edytuj") 
             {
+                //in this case nameCategory is a new name category
+                nameCategory = category.CheckText(textBoxNameCategory.Text);
 
-                MessageBox.Show("Edytowałeś kategorię");
+                if (nameCategory != cbNameCategory.Text)
+                    if (nameCategory != "")
+                    {
+                        //cbNameCategory is a old category name
+                        if (category.EditCategory(cbNameCategory.Text, nameCategory))
+                        {
+                            MessageBox.Show($"Poprawnie zmieniono nazwę kategorii na {nameCategory} ");
+                            this.Close();
+                        }
+
+                        else
+                            MessageBox.Show("nie można zmienić nazwy kategorii, ponieważ podana kategoria już istnieje w bazie");
+                    }
+                    else
+                        MessageBox.Show("Nie wprowadzono żadnych zmian");
+                  
                
-                this.Close();
+               
             }
             if(btnAddEditDelCat.Text == "Usuń")
             {
