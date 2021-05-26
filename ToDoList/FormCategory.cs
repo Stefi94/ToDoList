@@ -47,7 +47,7 @@ namespace ToDoList
                 }
             }
         }
-
+        //
         private void btnAddEditDelCat_Click(object sender, EventArgs e)
         {
             string nameCategory = textBoxNameCategory.Text;
